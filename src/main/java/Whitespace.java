@@ -10,6 +10,11 @@ public class Whitespace {
         // for each file "testdata{1,2,3}.txt
         // read in all the text and
         // send it to countBoth
+        for (int i = 1; i <= 3; i++) {// "i" refers to the testdata{i}.txt
+            String filename = "testdata" + i + ".txt"; //appends the file number of testdata
+            String content = Files.readString(Path.of(filename));
+            wspc.countBoth(content);
+        }
 
         wspc.countBoth("a b c d e"); // should print 4, 5
 
@@ -20,7 +25,17 @@ public class Whitespace {
         // count the number of whitepace chars and non-whitspace chars.
         // need to use a FOR loop.
         // print the results simply on a line #whitespaces, #ofnonwhitespacechars for each file.
-
+        int countSpaces = 0;
+        int countNonSpaces = 0;
+        for(int i = 0; i < testdata.length(); i++){
+            char c = testdata.charAt(i);
+            if(c == ' ' || c == '\t' || c == '\n' || c == '\r') {
+                countSpaces++;
+            } else {
+                countNonSpaces++;
+            }
+        }
+        System.out.println(countSpaces + ", " + countNonSpaces);
     }
 
 
